@@ -22,7 +22,12 @@ def getOntolgoies(list):
         #we cannot use teh URL as a file name because of slashes, so just get the actual name from the end of the URL
         #  %%%%%NOTE%%%%%   this method of gathering the name will not work if the URL doesnt contain a unique name at the end of its path
         name = re.split("/", url)
-        name = name[len(name)-1]
+        name = name[len(name)-1] #this gives us just the name of the ontology (from a list of strings that has been split) 
+        name = name[:len(name)-1] #this removes the newline char from the end of the string
+        
+        if "\n" in name:
+            print name
+        
         
         output = open(name, "w+")
         output.write(response)
@@ -40,5 +45,6 @@ if __name__ == '__main__':
     ontologies = open(pathToURLFile).readlines()
     os.chdir(pathToOutputLocation)
     getOntolgoies(ontologies)
+    print "finished!"
     
         
