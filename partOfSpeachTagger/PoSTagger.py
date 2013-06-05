@@ -102,18 +102,27 @@ def performPoSTagging(text):
     return goodTags
 
 
+#@param listTuples these are the word-PoS tags.  now that they are filtered, just give ma a list of words.  its all i need
+def getWords(listTuples):
+    results = []
+    for each in listTuples:
+        results.append(each[0])
+    
+    return results
+
+
 class MyTest(unittest.TestCase):
     def test(self):
         TestCase1 = "Ah! My husband and I wish we could travel yearly to Europe and take in all the amazing sites."
         TestCase1ExpectedResults = [("husband", "NN"), ("wish", "VB"), ("travel", "VB"), ("yearly", "RB"), ("take", "VB"), 
                                     ("amazing", "JJ"), ("sites", "NNPS")]
-        #self.assertEqual(set(performPoSTagging(TestCase1)), set(TestCase1ExpectedResults))
+        self.assertEqual(set(performPoSTagging(TestCase1)), set(TestCase1ExpectedResults))
         
         
         TestCase2 = "egads, the evil teacher assigns us work daily and expects it on his desk by eight the next morning!"
         TestCase2ExpectedResults = [("evil", "JJ"), ("teacher", "NN"), ("assigns", "VB"), ("work", "NN"), ("daily", "RB"), 
                                     ("expects", "VBZ"), ("desk", "NN"), ("next", "JJ"), ("morning", "NN")]
-#        self.assertEqual(set(performPoSTagging(TestCase2)), set(TestCase2ExpectedResults))
+        self.assertEqual(set(performPoSTagging(TestCase2)), set(TestCase2ExpectedResults))
 
 #these test cases fail, but fails because of NLTK...not my code.  
 #however, all the necessary terms ARE in the answer set...which is all we actually need.  the only concern is that they put words in
@@ -121,9 +130,9 @@ class MyTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    
-    m = MyTest()
-    m.test()
+    #these two lines are used to run the test cases
+#    m = MyTest()
+#    m.test()
     
 
 

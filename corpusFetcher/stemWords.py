@@ -2,6 +2,7 @@
 
 from porter2 import stem
 import os
+import unittest
 
 
 def stemWords(): 
@@ -22,6 +23,30 @@ def stemWords():
             
         newfile.write(results)
         print results
+
+class MyTest(unittest.TestCase):
+    def test(self):
+        TC1 = "appeared"
+        R1 = "appear" 
+        self.assertEqual(stem(TC1), R1)
+        
+        TC2 = "gears"
+        R2 = "gear" 
+        self.assertEqual(stem(TC2), R2)
+        
+        TC3 = "actually"
+        R3 = "actual" 
+        self.assertEqual(stem(TC3), R3)
+        
+        TC4 = "rate"
+        R4 = "rate" 
+        self.assertEqual(stem(TC4), R4)
+        
+        TC5 = "loaves"
+        R5 = "loaf" 
+        self.assertEqual(stem(TC5), R5)
+        #it cannot handle this test.   FAIL  (returns loav)
+
 
 if __name__ == "__main__":
     stemWords()
