@@ -63,6 +63,7 @@ def parseOntology(filePath):
     out.close()
     
 
+#pass in as an arguement the path to the ontologies you want stemmed
 if __name__ == '__main__':
     dirPath = sys.argv[1]
     getOntologies(dirPath)
