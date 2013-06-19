@@ -129,12 +129,8 @@ class MyTest(unittest.TestCase):
 #they shouldnt be there  (like egads from test case 2)
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     #these two lines are used to run the test cases
 #    m = MyTest()
 #    m.test()
     
-
-
-    
-        

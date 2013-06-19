@@ -1,0 +1,42 @@
+This document will describe the various Python packages for the DataONE ontology coverage project.
+
+package:
+	corpusFetcher:
+		This package is used to get a corpus and normalize it.  It also normalizes a thesaurus and performs part of speach.  However, to USE the part of speach package, one must download and install the natural language toolkit (NLTK).  the link is http://nltk.org/install.html    
+
+	classes:
+		fetchCorpus: This is the main file to call that will get the corpus from a remove location, and normalize it completely and in the right order
+		get_metadata: This file will call cn.dataone.org to get various corpus files and store them
+		lovins: This is a stemmer that follows the lovins stemmer pattern
+		paicehusk: This is a stemmer that follows the paice pattern
+		porter: This is a stemmer that follows the porter pattern  
+		porter2: This is a stemmer that follows the snowball pattern
+		removeNumbers: This is part of the normalization process that removes words with not enough english characters 
+		removePunct: This is part of the normalization process that removes all punctuation
+		removeStop: This is part of the normalization process that removes stop words
+		removeUpper: This is part of the normalization process that turns everything to lower case
+		stemWords: This is part of the normalization process that stems all words
+
+		These files normalize the same file and print out a new file in a pipe fashion.  It does this by putting files in the "data" directory from the parent directory.  the final product is a file called finishedCorpus_6.txt
+
+	OntologyWorker:
+	classes:
+		fetchOntology: This file takes a list of URLs and downloads the ontologies from the wweb.  Is very specific to gather the SWEET ontologies, not generalized.
+		ontologyStemmer: This file stems the class names from an ontology and then overwrites its.  Pass in as a parameter a directory containing OWL ontologies (only stems those)
+
+	partOfSpeachTagger:
+	classes:
+		PoSTagger: This file takes as an arguement a string, and returns a list of tuples with a word the PoS.  it filters out all except nouns, adverbs, adjects, and verbs
+
+	thesaurusFixer:
+	classes:
+		MergeKeyValuePairs: Because stemming a thesauri file can cause some keys to be the same...This merges the keys and corresponding values within a file.  you need to pass in 2 arguements (the input and output path) else it hardcodes to (likely) non-existent path
+		ThesaurusStemmer: This file takes a thesauri file and stems all the words within it.  you need to pass in 2 arguements (the input and output path) else it hardcodes to (likely) non-existent path
+
+	wordNet:
+	classes:
+		wordNetHandler: This file uses wordnet to generate synonyms for specific "words" (ie a string containing a single word).  However, because wordNet's synonym generator is ...bad, its not used.
+
+
+
+
