@@ -37,6 +37,7 @@ package:
 	classes:
 		wordNetHandler: This file uses wordnet to generate synonyms for specific "words" (ie a string containing a single word).  However, because wordNet's synonym generator is ...bad, its not used.
 
-
-
+Directories:
+	data:
+		This directory contains a variety of folders including the various levels of normalized corpus.  
 
