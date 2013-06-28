@@ -17,8 +17,20 @@ import math
 
 if __name__ == '__main__':
     
+    
+    ontologies = "/home/nicholas/research/Experiments/DataONEjava/stemmedSWEETOntologies"
     results = "/home/nicholas/research/Experiments/DataONEjava/results"
     
+    
+    files = os.listdir(ontologies)
+    
+    for eachFile in files:
+        if os.path.isfile(ontologies+"/"+eachFile) and ".txt" in eachFile:
+            move = subprocess.Popen("mv " + ontologies+"/"+eachFile + " " +results, shell=True)
+            move.wait()
+            
+            
+               
     files = os.listdir(results)
     
     for eachFile in files:

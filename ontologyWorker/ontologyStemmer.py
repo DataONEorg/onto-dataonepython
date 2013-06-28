@@ -34,12 +34,14 @@ def parseOntology(filePath):
     contents = open(filePath).readlines()
     
     counter = 0
-    while counter < len(contents):
-        outputFile.append(contents[counter])
-        if "<!-- Ontology Information -->" in contents[counter]:
-            break
-        else:     
-            counter +=1
+#    while counter < len(contents):
+#        outputFile.append(contents[counter])
+#        if "<!-- Ontology Information -->" in contents[counter]:
+#            break
+#        else:     
+#            counter +=1
+    
+    
     
     #now we can parse the file
     for i in range(counter, len(contents)):

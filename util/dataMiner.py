@@ -17,7 +17,7 @@ from pylab import *
 
 if __name__ == '__main__':
     
-    ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedOntologies/" 
+    ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedBioportalOntologies/" 
     
     #class      :     "<owl:Class rdf:about"
     #subClass   :     "<rdfs:subClassOf rdf"
