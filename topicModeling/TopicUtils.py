@@ -40,7 +40,7 @@ class TopicUtils:
         
         
         for eachTopic in topics:
-            print "string to find subdomain for topic " +str(eachTopic)
+            #print "string to find subdomain for topic " +str(eachTopic)
             queryDocSim = self.computeSimilarity(corpus, dictionary, lsi, eachTopic)
                         
             #this sorts the list in decreasing order by the score and not the document

@@ -72,8 +72,10 @@ class TopicController:
         
         
         #its numTopics * numTopics -1 because each topic is compared with EVERY other topic other than itself.  
-        print sum(internalDivergences) / (float(numTopics) * (numTopics-1) )
-        
+        score=  sum(internalDivergences) / (float(numTopics) * (numTopics-1) * numTopics )
+        print score
+        return score
+
         #if you want to boxplot uncomment the following llines
 #        figure()
 #        boxplot(internalDivergences, 0, '')
@@ -91,7 +93,7 @@ if __name__ == '__main__':
     
     
     pathToCorpusDocs = sys.argv[1]
-    pthToOutputFile = sys.argv[2]
+    pathToOutputFile = sys.argv[2]
     
     if len(sys.argv) > 3:
         threshold = float(sys.argv[3])
@@ -108,25 +110,45 @@ if __name__ == '__main__':
     else:
         similarityThreshold = 0.05 #we default to top 5%.  pick something meaningful becuase there is no garuantee that 0.05 is
     
-    t = TopicController()
-    t.setNumTopics(numTopics)
-    files = t.buildCorpus(pathToCorpusDocs, threshold)
     
-    lda, corpus, dictionary, topics = t.calculateTopics(files)
-    topics = t.TopicUtils.topicListFixer(topics)
-
-    t.internalDivergence(topics)
-    print topics
-    
-    docSim = t.TopicUtils.getMostSimilarDocuments(corpus, dictionary, topics, lda, similarityThreshold)
-    
-    output = open(pthToOutputFile,'w')
-
-    for each in docSim:
-        output.write(str(each) + "\n")
-    output.close()
-    
-    print docSim
+    #loop for testing num of topics...do all these topic counts, each 5 times...thats right, 5 (rememeber they are non-deterministic)
+    overallCounter = 1
+    while overallCounter < 6:
+        potentialTopicCounts = [5,10,20,25,50,75,100,125,150,175,200,250,500,550,600,650,700,750,800,850,900,950,1000,1250,1500,1750,2000,3000,4000,5000,10000,20000,25000,30000,35000,50000]
+        for eachTopicCount in potentialTopicCounts:
+        #loop for testing num of topics
+            
+            t = TopicController()
+            t.setNumTopics(eachTopicCount)#SWITCH THIS BACK!!!!! to numTopics
+            files = t.buildCorpus(pathToCorpusDocs, threshold)
+            
+            lda, corpus, dictionary, topics = t.calculateTopics(files)
+            topics = t.TopicUtils.topicListFixer(topics)
+        
+            score = t.internalDivergence(topics)
+        #    print topics
+            
+            docSim = t.TopicUtils.getMostSimilarDocuments(corpus, dictionary, topics, lda, similarityThreshold)
+            
+            pathToOutputFile = sys.argv[2] + "_"+ str(eachTopicCount) + "_" + str(overallCounter) #this adds num of topics to the list #SWITCH THIS BACK!!!!! to numTopics
+            
+            output = open(pathToOutputFile,'w')
+            
+            output.write("score = " + str(score) + "\n")
+        
+            for eachTopic in topics:
+                output.write(str(eachTopic) + "\n")
+        
+            for each in docSim:
+                output.write(str(each) + "\n")
+            output.close()
+            
+            
+            print "done with topic count " + str(eachTopicCount)
+        
+        overallCounter+=1
+        
+#    print docSim
     print "all finished"
     
     
