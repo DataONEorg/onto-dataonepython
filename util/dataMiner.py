@@ -9,7 +9,7 @@ import re
 import os
 import urllib2
 import sys
-from corpusFetcher import porter2
+from corpusManager import porter2
 import subprocess
 from pylab import *
 

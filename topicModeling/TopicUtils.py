@@ -130,7 +130,7 @@ class TopicUtils:
         keys1 = topic1.keys()
         
         for eachKey in keys1:
-            if eachKey in topic2: 
+            if eachKey in topic2 and topic2[eachKey] != 0: 
                 divergence += math.fabs((topic1[eachKey] / topic2[eachKey]) - 1) * topic2[eachKey]
             else: #if its not there...just add 1, its the max
                 divergence += 1

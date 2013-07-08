@@ -9,7 +9,7 @@ import re
 import os
 import urllib2
 import sys
-from corpusFetcher import porter2
+from corpusManager import porter2
 import subprocess
 import math
 
@@ -18,7 +18,7 @@ import math
 if __name__ == '__main__':
     
     
-    ontologies = "/home/nicholas/research/Experiments/DataONEjava/stemmedSWEETOntologies"
+    ontologies = "/home/nicholas/research/Experiments/DataONEjava/stemmedBioportalOntologies"
     results = "/home/nicholas/research/Experiments/DataONEjava/results"
     
     

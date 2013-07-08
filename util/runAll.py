@@ -9,16 +9,16 @@ import re
 import os
 import urllib2
 import sys
-from corpusFetcher import porter2
+from corpusManager import porter2
 import subprocess
 
 
 
 if __name__ == '__main__':
     
-    ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedSWEETOntologies/" 
+    ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedBioportalOntologies/" 
     javaFilesPath = "/home/nicholas/research/Experiments/DataONEjava"
-    corpusPath = "/home/nicholas/research/Experiments/DataONEjava/corpus.owl"
+    corpusPath = "/home/nicholas/research/Experiments/DataONEjava/fullCorpus.owl"
     owlJar = "/home/nicholas/research/Experiments/DataONEjava/owlapi-distribution-3.4.4-bin.jar" #you need to include the CWD or cobertura will crash
     
     files = os.listdir(ontologiesPath)

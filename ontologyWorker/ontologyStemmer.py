@@ -10,7 +10,7 @@ import os
 import urllib2
 import sys
 import string
-from corpusFetcher import porter2
+from corpusManager import porter2
 
 
 #load up an ontology file as text and stem each name.  Do this by giving it a dir containing all the ontologies.
