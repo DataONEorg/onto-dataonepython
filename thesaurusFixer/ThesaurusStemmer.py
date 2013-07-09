@@ -33,6 +33,9 @@ def stemThesaurus(inputPath, outputPath):
 
     outputFile.close()
 
+
+#you SHOULD pass in 2 parameters, the first is teh input path to the file you want normalized, and the second is the output path for that file
+#if you dont, it has hardcoded values and will likely fail
 if __name__ == '__main__':
     if len(sys.argv) > 1: #ie you passed a path to the synonym file
         inputPath = sys.argv[1]

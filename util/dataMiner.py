@@ -14,10 +14,12 @@ import subprocess
 from pylab import *
 
 
-
+#pass in the directory containing the ontologies you want mined.
 if __name__ == '__main__':
-    
-    ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedBioportalOntologies/" 
+    if len(sys.argv) > 1:
+        ontologiesPath = sys.argv[1]
+    else:
+        ontologiesPath = "/home/nicholas/research/Experiments/DataONEjava/stemmedBioportalOntologies/" 
     
     #class      :     "<owl:Class rdf:about"
     #subClass   :     "<rdfs:subClassOf rdf"
